@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Lộ trình HSG Tin học và Chuyên Tin THCS: 43 chủ đề C++, thuật toán và quy hoạch động, kèm bài tập theo tag trên CSATOJ.">
+  <meta name="theme-color" content="#235749">
+  <title>CSAT Tutor · Roadmap HSG Tin học</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/styles.ba210967cc00.css">
+  <link rel="preload" href="./assets/roadmap.d09f0efd29b0.json" as="fetch" crossorigin>
+  <script type="module" src="./assets/app.9a47c28aba2a.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#content">Đến roadmap</a>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="CSAT Tutor, về đầu roadmap">CSAT <span>TUTOR</span></a>
+    <div class="heading"><h1>Roadmap HSG Tin học · Chuyên Tin</h1><p>Nắm nền tảng, chọn nhánh, học tiếp.</p></div>
+  </header>
+  <main id="content" tabindex="-1">
+    <section class="controls" aria-label="Điều hướng roadmap">
+      <div class="navigation-row">
+        <nav aria-label="Chọn lớp">
+          <button data-view="full" aria-pressed="true">Toàn lộ trình</button>
+          <button data-view="A" aria-pressed="false">Lớp A</button>
+          <button data-view="B" aria-pressed="false">Lớp B</button>
+          <button data-view="C" aria-pressed="false">Lớp C</button>
+          <button data-view="DP" aria-pressed="false">Quy hoạch động</button>
+        </nav>
+        <div class="view-modes" role="group" aria-label="Cách xem">
+          <button data-mode="diagram" aria-pressed="true">Sơ đồ</button>
+          <button data-mode="list" aria-pressed="false">Danh sách</button>
+        </div>
+      </div>
+      <div class="tools-row">
+        <div class="search-field"><label class="sr-only" for="search">Tìm theo tag, chủ đề hoặc kiến thức</label><input id="search" type="search" placeholder="Tìm tag hoặc chủ đề…" autocomplete="off"><button id="clear-search" type="button" aria-label="Xóa tìm kiếm" hidden>×</button></div>
+        <div id="zoom-controls" role="group" aria-label="Phóng to sơ đồ"><button id="fit">Vừa khung</button><button id="minus" aria-label="Thu nhỏ">−</button><span id="scale-label" aria-live="off">100%</span><button id="plus" aria-label="Phóng to">+</button></div>
+        <a id="download" download hidden>Tải SVG ↓</a>
+      </div>
+    </section>
+    <div class="map-meta"><p id="result" role="status" aria-live="polite">Đang tải roadmap…</p><p id="view-hint">Chọn một ô để xem nền cần có và bài tập trên CSATOJ.</p></div>
+    <section class="diagram-panel" id="diagram-panel" aria-label="Sơ đồ lộ trình">
+      <div id="canvas" tabindex="0" aria-label="Sơ đồ có thể cuộn; dùng Tab để chọn một chủ đề" aria-busy="true"><div id="stage"></div></div>
+      <div class="legend"><span>→ Học trước đến học sau</span><span>“Nền: Axx / Bxx” là nền từ lớp trước.</span><span>Cuộn để di chuyển; + / − để phóng to.</span></div>
+    </section>
+    <div id="list" hidden></div>
+    <div id="notice" class="notice" hidden><p id="notice-text"></p><button id="retry" hidden>Thử lại</button></div>
+    <noscript><p class="notice">Bật JavaScript để tìm kiếm và xem từng chủ đề. <a href="./assets/diagram-full.0f44afaf31be.svg">Mở sơ đồ SVG</a>.</p></noscript>
+  </main>
+  <footer>CSAT Tutor · A: nền C++ · B: HSG Phường / Xã · C: HSG Tỉnh, Chuyên Tin.</footer>
+  <dialog id="topic-dialog" aria-labelledby="topic-title">
+    <div class="dialog-top"><span id="topic-code"></span><button id="close-dialog" aria-label="Đóng chi tiết chủ đề">Đóng ×</button></div>
+    <div id="topic-content">
+      <h2 id="topic-title" tabindex="-1"></h2><p id="topic-summary"></p>
+      <a id="csatoj-link" target="_blank" rel="noopener noreferrer"></a>
+      <div class="connections"><section><h3>Cần học trước</h3><div id="prerequisites"></div></section><section><h3>Có thể học tiếp</h3><div id="next-topics"></div></section></div>
+      <details id="topic-details"><summary>Nội dung trong chủ đề</summary><ul id="detail-list"></ul></details>
+    </div>
+    <div class="dialog-bottom"><button id="locate">Tìm trên roadmap</button><p>Mỗi nhánh tiếp theo có thể cần thêm nền.</p></div>
+  </dialog>
+</body>
+</html>
