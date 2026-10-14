@@ -29,7 +29,7 @@ try {
   assert.equal(requests.filter(url => /diagram-.*\.svg/.test(url)).length, 1, 'Only the initial diagram is fetched.');
   assert.equal(requests.filter(url => /roadmap\..*\.json/.test(url)).length, 1, 'Data preload is reused.');
   await page.screenshot({ path: path.join(results, 'desktop.png') });
-  await page.locator('[data-view=A]').click(); await page.locator('#stage [data-node]').nth(8).waitFor();
+  await page.locator('[data-view=A]').click(); await page.waitForFunction(() => document.querySelectorAll('#stage [data-node]').length === 9);
   assert.equal(await page.locator('#stage [data-node]').count(), 9);
   await page.locator('#plus').click();
   await page.locator('#canvas').evaluate(element => element.scrollTop = 200);
@@ -47,7 +47,7 @@ try {
   await page.keyboard.press('Escape'); assert.equal(await page.evaluate(() => document.activeElement.dataset.node), 'A01');
   await page.locator('#clear-search').click();
   const savedViewport = await viewport();
-  await page.locator('[data-view=DP]').click(); await page.locator('#stage [data-node]').nth(6).waitFor();
+  await page.locator('[data-view=DP]').click(); await page.waitForFunction(() => document.querySelectorAll('#stage [data-node]').length === 7);
   assert.equal(await page.locator('#stage [data-node]').count(), 7);
   await page.locator('#graph-D06').click();
   assert.equal(await page.locator('#detail-list li').count(), 8);
@@ -85,7 +85,7 @@ try {
   await page.locator('#locate').click(); await page.locator('#graph-B02').waitFor();
   assert.equal(await page.evaluate(() => document.activeElement.dataset.node), 'B02');
   await page.setViewportSize({ width: 375, height: 812 });
-  await page.goto(base + '#view=DP'); await page.locator('#graph-D01').waitFor();
+  await page.goto(base + '#view=DP'); await page.waitForFunction(() => document.querySelectorAll('#stage [data-node]').length === 7);
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   assert(Number((await page.locator('#scale-label').textContent()).replace('%', '')) >= 70, 'Mobile opens at a readable scale.');
   await page.screenshot({ path: path.join(results, 'mobile.png') });
